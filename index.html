@@ -10,13 +10,16 @@
 </head>
 <body>
 
-    <div class = "header">
-        <div class = "scoreboard">
-        <h1><a href="high_score.html">High Scores</a></h1>
-        </div>
-        <div class = "timer">
-            <p>Time Remaining:</p>
-        </div>
+    <a href="high_score.html">High Scores</a>
+
+    <div id = "container">
+        <div id="timer"></div>
+        <div id="quiz-box">
+            <h1>Coding Quiz</h1>
+            <p>Instructions: Answer the following coding questions within the time limit. Incorrect answers penalize your time by 10 seconds. Your score is recorded as time remaining. Good luck!</p>
+        <ul id="choices"></ul>
+        <button id="start-btn">Start</button>        </div>
+        
     </div>
     <script src="./assets/js/script.js"></script>    
 </body>
