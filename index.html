@@ -4,22 +4,50 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/reset.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Code Quiz</title>
 </head>
 <body>
+    <!-- <header>
+        <div id="highscore">
+            <a href="high_score.html">High Scores</a>
+        </div>
+        <div id="timer-container">
+            <h1 id="timer">60</h1>
+            <h3>seconds remaining</h3>
+        </div>
+    </header> -->
 
-    <a href="high_score.html">High Scores</a>
-
-    <div id = "container">
-        <div id="timer"></div>
-        <div id="quiz-box">
-            <h1>Coding Quiz</h1>
-            <p>Instructions: Answer the following coding questions within the time limit. Incorrect answers penalize your time by 10 seconds. Your score is recorded as time remaining. Good luck!</p>
-        <ul id="choices"></ul>
-        <button id="start-btn">Start</button>        </div>
-        
+    <div class="container">
+        <div id="game" class="justify-center flex-column">
+            <div id="hud">
+                <div class="hud-item">
+                    <p class="hud-prefix">
+                        Time
+                    </p>
+                    <h1 class="hud-main-text" id="time">
+                        60
+                    </h1>
+                </div>
+            </div>
+            <h1 id="question">What is the answer to this question?</h1>
+            <div class="choice-container">
+                <p class="choice-prefix">A</p>
+                <p class="choice-text" data-number="1">Choice</p>    
+            </div>
+            <div class="choice-container">
+                <p class="choice-prefix">B</p>
+                <p class="choice-text" data-number="2">Choice 2</p>    
+            </div>
+            <div class="choice-container">
+                <p class="choice-prefix">C</p>
+                <p class="choice-text" data-number="3">Choice 3</p>    
+            </div>
+            <div class="choice-container">
+                <p class="choice-prefix">D</p>
+                <p class="choice-text" data-number="4">Choice 4</p>    
+            </div>
+        </div>
     </div>
     <script src="./assets/js/script.js"></script>    
 </body>
