@@ -5,7 +5,7 @@ var questions = [
             choice2: "JavaScript is open and cross-platform",
             choice3: "Both of the above",
             choice4: "None of the above",
-            answer: "Both of the above",
+            answer: "Both of the above"
         },
         {
             question: "Which built-in method removes the last element from an array and returns that element?",
@@ -13,7 +13,7 @@ var questions = [
             choice2: "get()",
             choice3: "pop()",
             choice4: "None of the above",
-            answer: "pop()",
+            answer: "pop()"
         },
         {
             question: "Which of the following functions splits objects into an array of strings",
@@ -21,7 +21,7 @@ var questions = [
             choice2: "split()",
             choice3: "replace()",
             choice4: "search()",
-            answer: "split()",
+            answer: "split()"
         },
         {
             question: "Which functions returns the string value as upper case?",
@@ -29,7 +29,7 @@ var questions = [
             choice2: "toUpperCase()",
             choice3: "toString()",
             choice4: "subString()",
-            answer: "toUpperCase()",
+            answer: "toUpperCase()"
         },
         {
             question: "____ tag is an extension of HTML that can enclose any number of JavaScript statements",
@@ -37,7 +37,7 @@ var questions = [
             choice2: "<body>",
             choice3: "<head>",
             choice4: "<title>",
-            answer: "<script>",
+            answer: "<script>"
         },
     ]
 
@@ -46,9 +46,7 @@ var penalty = 10;
 
 var question = document.querySelector("#question");
 var choices = Array.from(document.querySelectorAll(".choice-text"));
-var progressText = document.querySelector("#progressText");
 var scoreText= document.querySelector("#time");
-var progressBarFull = document.querySelector("#progressBarFull");
 
 var currentQuestion = {}
 var acceptingAnswers = true;
@@ -83,10 +81,12 @@ function startGame() {
 
 function getNewQuestion() {
     if(availableQuestions.length === 0 || questionCounter > maxQuestions) {
-        localStorage.setItem("mostRecentScore", time)
+        localStorage.setItem(secondsLeft, timerEl)
 
-        return window.location.assign("/end.html")
+        return window.location.assign("high_score.html")
 }
+
+//randomizes questions
 
 var questionsIndex = Math.floor(Math.random() * availableQuestions.length)
 currentQuestion = availableQuestions[questionsIndex]
@@ -95,41 +95,34 @@ question.innerText = currentQuestion.question
 choices.forEach(choice => {
     var number = choice.dataset["number"]
     choice.innerText = currentQuestion["choice" + number]
-})
+    })
 
-availableQuestions.splice(questionsIndex, 1);
+    availableQuestions.splice(questionsIndex, 1);
 
-acceptingAnswers = true;
+    acceptingAnswers = true; 
 }
 
+
     choices.forEach(choice => {
-        choice.addEventListener("click", e => {
+        choice.addEventListener("click", event => {
             if(!acceptingAnswers) return;
 
             acceptingAnswers = false;
-            var selectedChoice = e.target;
-            var selectedAnswer = selectedChoice.dataset["number"]
+            var selectedChoice = event.target;
+            var selectedAnswer = selectedChoice.dataset["number"];
 
-            var classToApply = selectedAnswer == currentQuestion.answer ? ("correct") :
-            ("incorrect");
+            var classToApply = selectedAnswer == currentQuestion.answer ? 'correct' :
+            'incorrect';
 
-            // if(classToApply === "correct") {
-            //     incrementScore(scorePoints)
-            // }
 
             selectedChoice.parentElement.classList.add(classToApply);
 
             setTimeout(() => {
                 selectedChoice.parentElement.classList.remove(classToApply);
                 getNewQuestion();
-            }, 1000)
+            }, 100);
         })
     })
-
-    incrementsScore = num => {
-        score +=num;
-        scoreText.innerText =score;
-    }
 
 startTimer();
 
