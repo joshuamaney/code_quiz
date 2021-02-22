@@ -53,7 +53,9 @@ var acceptingAnswers = true;
 var questionCounter = 0;
 var availableQuestions = [];
 
-var secondsLeft = 10;
+var maxQuestions = 5;
+
+var secondsLeft = 60;
 
 function startTimer() {
     // Sets interval in variable
@@ -120,17 +122,6 @@ choices.forEach(choice => {
         })
     })
 
-    function score() {
-        question.innerHTML = "";
-        timerEl.innerHTML = "";
-    
-        // Heading:
-        var createH1 = document.createElement("h1");
-        createH1.setAttribute("id", "createH1");
-        createH1.textContent = "All Done!"
-    
-        questionsDiv.appendChild(createH1);
-    }
 startTimer();
 
 startGame();
