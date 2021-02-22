@@ -91,9 +91,9 @@ function getNewQuestion() {
     currentQuestion = availableQuestions[questionsIndex]
     question.innerText = currentQuestion.question
 
-    choices.forEach(function (choice) {
-        var number = choice.dataset["number"]
-        choice.innerText = currentQuestion["choice" + number]
+    choices.forEach(function (userChoice) {
+        var number = userChoice.dataset["number"]
+        userChoice.innerText = currentQuestion["choice" + number]
     })
 
     availableQuestions.splice(questionsIndex, 1);
@@ -102,8 +102,8 @@ function getNewQuestion() {
 }
 
 
-choices.forEach(function (choice) {
-    return choice.addEventListener("click", function (event) {
+choices.forEach(function (userChoice) {
+    return userChoice.addEventListener("click", function (event) {
         if (!acceptingAnswers) return;
 
         acceptingAnswers = false;
@@ -121,6 +121,7 @@ choices.forEach(function (choice) {
         }, 100);
     });
 })
+
 
 startTimer();
 
