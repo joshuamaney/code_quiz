@@ -53,10 +53,7 @@ var acceptingAnswers = true;
 var questionCounter = 0;
 var availableQuestions = [];
 
-var scorePoints = 100;
-var maxQuestions = 4;
-
-var secondsLeft = 60;
+var secondsLeft = 10;
 
 function startTimer() {
     // Sets interval in variable
@@ -114,7 +111,6 @@ choices.forEach(choice => {
             var classToApply = selectedAnswer == currentQuestion.answer ? 'correct' :
             'incorrect';
 
-
             selectedChoice.parentElement.classList.add(classToApply);
 
             setTimeout(() => {
@@ -124,6 +120,17 @@ choices.forEach(choice => {
         })
     })
 
+    function score() {
+        question.innerHTML = "";
+        timerEl.innerHTML = "";
+    
+        // Heading:
+        var createH1 = document.createElement("h1");
+        createH1.setAttribute("id", "createH1");
+        createH1.textContent = "All Done!"
+    
+        questionsDiv.appendChild(createH1);
+    }
 startTimer();
 
 startGame();
