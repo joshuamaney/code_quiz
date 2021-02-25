@@ -72,6 +72,7 @@ function startQuiz() {
 function startTimer() {
     // Sets interval in variable
     var timerInterval = setInterval(function () {
+        // the timer counts down
         secondsLeft--;
         timerEl.textContent = secondsLeft;
     
@@ -119,6 +120,7 @@ choices.forEach(function(userChoice) {
         var selectedChoice = event.target;
         var selectedAnswer = selectedChoice.dataset["number"];
         console.log("selectedAnswer");
+
         if(selectedAnswer != currentQuestion.answer) {
             secondsLeft = secondsLeft - penalty;
         }
