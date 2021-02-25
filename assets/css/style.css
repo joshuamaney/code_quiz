@@ -51,10 +51,6 @@ h2 {
     text-align: center;
 }
 
-.hidden {
-    display: none;
-}
-
 .btn {
     font-size: 2.4rem;
     padding: 2rem 0;
@@ -69,16 +65,8 @@ h2 {
 
 .btn:hover {
     cursor: pointer;
-    box-shadow: cadetblue;
-    transition: transform 150ms;
-    transform: scale(1.03);
 }
 
-.btn[disabled]:hover {
-    cursor: not-allowed;
-    box-shadow: none;
-    transform: none;
-}
 
 #highscore-btn {
     background: crimson;
@@ -100,9 +88,6 @@ h2 {
 
 .choice-container:hover {
     cursor: pointer;
-    box-shadow: 0 0.4rem 1.5rem 0 rgb(89, 164, 250);
-    transform: scale(1.02);
-    transform: transform 100ms;
 }
 
 .choice-prefix {
