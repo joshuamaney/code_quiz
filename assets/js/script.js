@@ -13,6 +13,7 @@ var score = 0;
 var questionCounter = 0;
 // empty array that will pull questions from questions set
 var availableQuestions = [];
+var timer;
 var secondsLeft = 60;
 var penalty = 10;
 // question and answer array
@@ -75,10 +76,15 @@ function startTimer() {
         // the timer counts down
         secondsLeft--;
         timerEl.textContent = secondsLeft;
-    
-        if (secondsLeft === 0) {
+        // if time is 0 or no more questions
+        if (secondsLeft === 0 || availableQuestions.length === 0) {
         // Stops execution of action at set interval
             clearInterval(timerInterval);
+            // Saves the value of secondsLeft as "score" in local storage
+            function finalScore() {
+                return secondsLeft;
+            }
+            localStorage.setItem("Score", secondsLeft);
         }
     
     }, 1000);
@@ -86,9 +92,9 @@ function startTimer() {
 
 function getNewQuestion() {
     // check if out of questions, then go to highscore page
-    if(availableQuestions.length === 0) { 
-        return window.location.assign("./high_score.html");
-    }
+    // if(availableQuestions.length === 0) {
+    //     return window.location.assign("./high_score.html");
+    // }
     // increments the question
     questionCounter++;
     // get random question
