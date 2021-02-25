@@ -114,15 +114,7 @@ h2 {
     padding: 2rem;
     width: 100%;
 }
-
-.correct {
-    background: greenyellow;
-}
-
-.incorrect {
-    background: crimson;
-}
-
+ 
 #hud {
     display: flex;
     justify-content: space-between;
@@ -137,58 +129,8 @@ h2 {
     text-align: center;
 }
 
-#progressBar {
-    width: 20rem;
-    height: 3rem;
-    border: 0.2 solid greenyellow;
-    margin-top: 2rem;
-    border-radius: 50px;
-    overflow: hidden;
-}
-
-#progressBarFull {
-    height: 100%;
-    background: greenyellow;
-    width: 0%;
-}
-
 @media screen and (max-width: 768px) {
     .choice-container {
         min-width: 40rem;
     }
 }
-
-
-
-
-
-/* 
-header {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-#quiz-container {
-    margin-left: 33%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    width: 500px;
-    height: 500px;
-    border: 3px solid #ffffff;
-}
-
-#start-btn {
-    background-color: #ffffff;
-    margin-left: 10%;
-    padding: 16px 32px;
-    color: #39B2E2;
-}
-
-#quiz-box {
-    margin: 25px;
-}
-
-#timer {
-} */

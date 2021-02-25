@@ -42,20 +42,16 @@ var questions = [
 ]
 
 var timerEl = document.querySelector("#time");
-var penalty = 10;
-
 var question = document.querySelector("#question");
 var choices = Array.from(document.querySelectorAll(".choice-text"));
 var scoreText = document.querySelector("#time");
 
 var currentQuestion = {}
 var acceptingAnswers = true;
-var questionCounter = 0;
-var availableQuestions = [];
-
-var maxQuestions = 5;
+var questionsArray = [];
 
 var secondsLeft = 60;
+var penalty = 10;
 
 function startTimer() {
     // Sets interval in variable
@@ -72,14 +68,13 @@ function startTimer() {
 }
 
 function startGame() {
-    questionCounter = 0;
     time = 0
-    availableQuestions = [...questions];
+    questionsArray = [...questions];
     getNewQuestion();
 }
 
 function getNewQuestion() {
-    if (availableQuestions.length === 0 || questionCounter > maxQuestions) {
+    if (questionsArray.length === 0) {
         localStorage.setItem(secondsLeft, timerEl)
 
         return window.location.assign("high_score.html")
@@ -87,8 +82,8 @@ function getNewQuestion() {
 
     //randomizes questions
 
-    var questionsIndex = Math.floor(Math.random() * availableQuestions.length)
-    currentQuestion = availableQuestions[questionsIndex]
+    var questionsIndex = Math.floor(Math.random() * questionsArray.length)
+    currentQuestion = questionsArray[questionsIndex]
     question.innerText = currentQuestion.question
 
     choices.forEach(function (userChoice) {
@@ -96,31 +91,38 @@ function getNewQuestion() {
         userChoice.innerText = currentQuestion["choice" + number]
     })
 
-    availableQuestions.splice(questionsIndex, 1);
+    questionsArray.splice(questionsIndex, 1);
 
     acceptingAnswers = true;
 }
 
 
 choices.forEach(function (userChoice) {
-    return userChoice.addEventListener("click", function (event) {
+        userChoice.addEventListener("click", function (event) {
         if (!acceptingAnswers) return;
 
         acceptingAnswers = false;
         var selectedChoice = event.target;
         var selectedAnswer = selectedChoice.dataset["number"];
 
-        var classToApply = selectedAnswer == currentQuestion.answer ? 'correct' :
-            'incorrect';
+        var classToApply = selectedAnswer 
+
+        if (selectedChoice === "incorrect") {
+            penalty();
+        }
 
         selectedChoice.parentElement.classList.add(classToApply);
 
         setTimeout(function () {
             selectedChoice.parentElement.classList.remove(classToApply);
             getNewQuestion();
-        }, 100);
-    });
+        }, 100)
+    })
 })
+
+function penalty() {
+    timerEl = time - penalty;
+}
 
 
 startTimer();
