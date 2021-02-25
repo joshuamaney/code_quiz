@@ -119,7 +119,7 @@ choices.forEach(function(userChoice) {
         var selectedChoice = event.target;
         var selectedAnswer = selectedChoice.dataset["number"];
         console.log("selectedAnswer");
-        if(selectedChoice != currentQuestion.answer) {
+        if(selectedAnswer != currentQuestion.answer) {
             secondsLeft = secondsLeft - penalty;
         }
         getNewQuestion();
