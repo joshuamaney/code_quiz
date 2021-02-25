@@ -43,7 +43,7 @@ var questions = [
         answer: 2
     },
     {
-        question: "Which functions returns the string value as upper case?",
+        question: "Which function returns the string value as upper case?",
         choice1: "toLocaleUpperCase()",
         choice2: "toUpperCase()",
         choice3: "toString()",
