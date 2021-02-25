@@ -13,7 +13,6 @@ var score = 0;
 var questionCounter = 0;
 // empty array that will pull questions from questions set
 var availableQuestions = [];
-var timer;
 var secondsLeft = 60;
 var penalty = 10;
 // question and answer array
@@ -92,9 +91,9 @@ function startTimer() {
 
 function getNewQuestion() {
     // check if out of questions, then go to highscore page
-    // if(availableQuestions.length === 0) {
-    //     return window.location.assign("./high_score.html");
-    // }
+    if(availableQuestions.length === 0) {
+        return window.location.assign("./high_score.html");
+    }
     // increments the question
     questionCounter++;
     // get random question
